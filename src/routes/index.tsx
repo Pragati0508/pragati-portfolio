@@ -183,7 +183,7 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
 
 /* ---------- STATS ---------- */
 const STATS = [
-  { v: 5, suffix: "+", l: "Major Projects" },
+  { v: 6, suffix: "+", l: "Major Projects" },
   { v: 2, suffix: "", l: "Products Shipped" },
   { v: 2, suffix: "", l: "IIT Pitches" },
   { v: 15, suffix: "+", l: "Technologies" },
