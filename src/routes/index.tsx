@@ -357,6 +357,7 @@ function Products() {
 
 /* ---------- TECHNICAL PROJECTS ---------- */
 const PROJECTS = [
+  { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" /> },
   { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" /> },
   { name: "AI Chatbot · Sentiment Detection", desc: "AI-powered chatbot that analyzes user sentiment and generates intelligent responses.", tags: ["Python","NLP","Sentiment","AI"], icon: <Sparkles className="size-5" /> },
   { name: "E-Commerce Management System", desc: "Full-stack e-commerce app with authentication, order management and database integration.", tags: ["Auth","MongoDB","Orders","Full-Stack"], icon: <Database className="size-5" /> },
