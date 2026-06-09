@@ -3,10 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import pragatiAsset from "@/assets/pragati.png.asset.json";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
+import safeguardAsset from "@/assets/safeguard.png.asset.json";
+import novaguardAsset from "@/assets/novaguard.png.asset.json";
 import {
   Github, Linkedin, Mail, Download, ArrowRight, ArrowUpRight,
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
-  GraduationCap, Award, MapPin, Send, Menu, X,
+  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -27,7 +29,7 @@ export const Route = createFileRoute("/")({
         jobTitle: "Co-Founder & Director, Software Developer",
         worksFor: { "@type": "Organization", name: "Trinova Innovation LLP" },
         email: "mailto:2k23.csai2311177@gmail.com",
-        sameAs: ["https://www.linkedin.com/in/pragati-patel-2a3b54318"],
+        sameAs: ["https://www.linkedin.com/in/pragati-patel-2a3b54318/"],
       }),
     }],
   }),
@@ -144,7 +146,7 @@ function Hero() {
             </a>
           </div>
           <div className="mt-10 flex items-center gap-5 text-muted-foreground">
-            <SocialIcon href="https://www.linkedin.com/in/pragati-patel-2a3b54318" label="LinkedIn"><Linkedin className="size-4" /></SocialIcon>
+            <SocialIcon href="https://www.linkedin.com/in/pragati-patel-2a3b54318/" label="LinkedIn"><Linkedin className="size-4" /></SocialIcon>
             <SocialIcon href="https://github.com/" label="GitHub"><Github className="size-4" /></SocialIcon>
             <SocialIcon href="mailto:2k23.csai2311177@gmail.com" label="Email"><Mail className="size-4" /></SocialIcon>
           </div>
@@ -308,6 +310,7 @@ const PRODUCTS = [
     features: ["User Authentication","Role-Based Access","Incident Reporting","Admin Dashboard","Real-Time Monitoring","Secure Data","Cloud Integration","Analytics"],
     stack: ["React.js","Node.js","Express.js","MongoDB","JWT","AWS"],
     icon: <Cpu className="size-5" />,
+    image: safeguardAsset.url,
   },
   {
     name: "Nova Guard",
@@ -316,6 +319,7 @@ const PRODUCTS = [
     features: ["Alert Management","Event Tracking","Dashboard Analytics","Monitoring","User Management","Reporting","Data Visualization"],
     stack: ["React.js","Node.js","MongoDB","AWS","Analytics"],
     icon: <Database className="size-5" />,
+    image: novaguardAsset.url,
   },
 ];
 function Products() {
@@ -327,6 +331,10 @@ function Products() {
           <motion.div key={p.name} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
             className="group glass rounded-3xl p-7 hover:border-primary/40 transition relative overflow-hidden">
             <div className="absolute -top-24 -right-24 size-60 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
+            <div className="relative mb-5 aspect-[16/10] rounded-2xl overflow-hidden bg-secondary/40 border border-border/60">
+              <img src={p.image} alt={p.name} className="size-full object-cover group-hover:scale-105 transition duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            </div>
             <div className="flex items-start justify-between gap-4 mb-4">
               <div>
                 <div className="size-12 grid place-items-center rounded-2xl bg-[var(--gradient-primary)] text-primary-foreground mb-4">{p.icon}</div>
@@ -359,8 +367,8 @@ function Products() {
 const PROJECTS = [
   { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" /> },
   { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" /> },
-  { name: "AI Chatbot · Sentiment Detection", desc: "AI-powered chatbot that analyzes user sentiment and generates intelligent responses.", tags: ["Python","NLP","Sentiment","AI"], icon: <Sparkles className="size-5" /> },
-  { name: "E-Commerce Management System", desc: "Full-stack e-commerce app with authentication, order management and database integration.", tags: ["Auth","MongoDB","Orders","Full-Stack"], icon: <Database className="size-5" /> },
+  { name: "Sentiment & Emotion Detection", desc: "AI-powered NLP system that analyzes text to detect sentiment polarity and underlying emotions, generating intelligent contextual responses.", tags: ["Python","NLP","Sentiment","Emotion AI","ML"], icon: <BrainCircuit className="size-5" /> },
+  { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" /> },
 ];
 function Projects() {
   return (
@@ -385,13 +393,12 @@ function Projects() {
 
 /* ---------- SKILLS ---------- */
 const SKILLS: { group: string; items: { name: string; level: number }[] }[] = [
-  { group: "Programming", items: [{name:"Python",level:90},{name:"Java",level:75},{name:"JavaScript",level:88},{name:"C++",level:70},{name:"SQL",level:82}] },
-  { group: "Frontend", items: [{name:"React.js",level:90},{name:"Tailwind CSS",level:88},{name:"HTML",level:95},{name:"CSS",level:92}] },
-  { group: "Backend", items: [{name:"Node.js",level:82},{name:"Express.js",level:80}] },
-  { group: "Database", items: [{name:"MongoDB",level:85},{name:"MySQL",level:78}] },
-  { group: "Data Analytics", items: [{name:"Pandas",level:85},{name:"NumPy",level:82},{name:"Power BI",level:78},{name:"Excel",level:85}] },
-  { group: "Cloud", items: [{name:"AWS",level:80},{name:"Lambda",level:78},{name:"API Gateway",level:75}] },
-  { group: "Tools", items: [{name:"Git / GitHub",level:88},{name:"VS Code",level:92},{name:"Postman",level:85}] },
+  { group: "Languages", items: [{name:"C++",level:80},{name:"Python",level:90},{name:"JavaScript",level:88}] },
+  { group: "Frontend", items: [{name:"React.js",level:90},{name:"HTML5",level:95},{name:"CSS3",level:92},{name:"Bootstrap",level:85}] },
+  { group: "Backend", items: [{name:"Node.js",level:85},{name:"Express.js",level:82}] },
+  { group: "Database", items: [{name:"MongoDB",level:85},{name:"SQL",level:82}] },
+  { group: "Core Concepts", items: [{name:"Data Structures & Algorithms",level:85},{name:"OOPs",level:88},{name:"DBMS",level:82}] },
+  { group: "Tools", items: [{name:"Git",level:90},{name:"GitHub",level:90},{name:"n8n",level:75},{name:"Postman",level:85}] },
 ];
 function Skills() {
   return (
@@ -400,8 +407,13 @@ function Skills() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {SKILLS.map((g, i) => (
           <motion.div key={g.group} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-            className="glass rounded-2xl p-6">
-            <h3 className="font-semibold mb-4 flex items-center gap-2"><span className="size-1.5 rounded-full bg-primary" />{g.group}</h3>
+            whileHover={{ y: -6 }}
+            className="group glass rounded-2xl p-6 relative overflow-hidden hover:border-primary/50 transition-all duration-300">
+            <div className="absolute -top-16 -right-16 size-40 rounded-full bg-[var(--gradient-primary)] opacity-0 group-hover:opacity-20 blur-3xl transition duration-500" />
+            <h3 className="font-semibold mb-4 flex items-center gap-2 relative">
+              <span className="size-2 rounded-full bg-[var(--gradient-primary)] group-hover:scale-150 transition" />
+              <span className="group-hover:text-gradient transition">{g.group}</span>
+            </h3>
             <div className="space-y-3">
               {g.items.map(s => (
                 <div key={s.name}>
@@ -421,22 +433,36 @@ function Skills() {
 }
 
 /* ---------- CERTS ---------- */
-const CERTS = [
-  { title: "Deloitte Australia · Data Analytics Virtual Experience", desc: "Practical data analytics tasks: business problem solving, data interpretation, dashboard development and analytical reporting." },
-  { title: "Data Science Certification · CodeWithHarry", desc: "Python, Data Analysis, ML fundamentals, Pandas, NumPy, Data Visualization and full Data Science workflows." },
-  { title: "AWS Cloud Projects Experience", desc: "Hands-on serverless applications using AWS Lambda, API Gateway and cloud services." },
+const CERTS: { title: string; desc: string; year?: string; icon: React.ReactNode; accent: string }[] = [
+  { title: "Patent Filed · Safeguard+ Personal Safety Device", desc: "Application No. 202611050617 — IoT-based personal safety device patent filed.", year: "2025", icon: <FileBadge className="size-6" />, accent: "from-primary to-accent" },
+  { title: "Co-Founded IoT Safety Startup", desc: "Co-founded Trinova Innovation LLP — a startup focused on IoT-based safety solutions.", icon: <Rocket className="size-6" />, accent: "from-accent to-primary" },
+  { title: "Tata Group · GenAI Powered Data Analytics (Forage)", desc: "Job Simulation — Conducted EDA, delinquency risk analysis, predictive modeling and AI-powered collections strategy development.", icon: <BrainCircuit className="size-6" />, accent: "from-primary to-accent" },
+  { title: "Generative AI & LLM Certification", desc: "Hands-on with Generative AI models, Large Language Models, prompt engineering and applied AI workflows.", icon: <Sparkles className="size-6" />, accent: "from-accent to-primary" },
+  { title: "Python Programming Certification", desc: "Core Python, scripting, data handling and problem-solving fundamentals.", icon: <Code2 className="size-6" />, accent: "from-primary to-accent" },
+  { title: "HTML & Bootstrap Certification", desc: "Semantic HTML5 and responsive UI development with the Bootstrap framework.", icon: <Award className="size-6" />, accent: "from-accent to-primary" },
+  { title: "Hackathon Participation Certificate", desc: "Recognized for participation and rapid product prototyping in competitive hackathons.", icon: <Heart className="size-6" />, accent: "from-primary to-accent" },
 ];
 function Certifications() {
   return (
     <Section id="certs">
-      <SectionHeading kicker="Credentials" title="Certifications & learning" />
-      <div className="grid md:grid-cols-3 gap-5">
+      <SectionHeading kicker="Credentials" title="Achievements & certifications" sub="Patents, certifications and milestones along the way." />
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {CERTS.map((c, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-            className="glass rounded-2xl p-6 hover:border-primary/40 transition">
-            <Award className="size-6 text-primary mb-3" />
-            <h3 className="font-semibold leading-snug">{c.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+          <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+            whileHover={{ y: -6, rotate: -0.3 }}
+            className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-border via-border to-border hover:from-primary/60 hover:via-accent/40 hover:to-primary/60 transition-all duration-500">
+            <div className="relative glass rounded-2xl p-6 h-full overflow-hidden">
+              <div className="absolute -top-20 -right-20 size-44 rounded-full bg-[var(--gradient-primary)] opacity-0 group-hover:opacity-25 blur-3xl transition duration-500" />
+              <div className="flex items-start justify-between mb-4">
+                <div className={`size-12 grid place-items-center rounded-xl bg-gradient-to-br ${c.accent} text-primary-foreground shadow-[var(--shadow-glow)] group-hover:scale-110 group-hover:rotate-6 transition duration-300`}>
+                  {c.icon}
+                </div>
+                {c.year && <span className="text-[10px] font-bold uppercase tracking-widest text-primary glass rounded-full px-2.5 py-1">{c.year}</span>}
+              </div>
+              <h3 className="font-semibold leading-snug group-hover:text-gradient transition">{c.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[var(--gradient-primary)] group-hover:w-full transition-all duration-500" />
+            </div>
           </motion.div>
         ))}
       </div>
@@ -489,7 +515,7 @@ function Contact() {
           <SectionHeading kicker="Get in touch" title="Let's build something meaningful." sub="Open to collaborations, internships, startup conversations and product opportunities." />
           <div className="space-y-3">
             <ContactRow icon={<Mail className="size-4" />} label="Email" value="2k23.csai2311177@gmail.com" href="mailto:2k23.csai2311177@gmail.com" />
-            <ContactRow icon={<Linkedin className="size-4" />} label="LinkedIn" value="pragati-patel-2a3b54318" href="https://www.linkedin.com/in/pragati-patel-2a3b54318" />
+            <ContactRow icon={<Linkedin className="size-4" />} label="LinkedIn" value="pragati-patel-2a3b54318" href="https://www.linkedin.com/in/pragati-patel-2a3b54318/" />
             <ContactRow icon={<Github className="size-4" />} label="GitHub" value="github.com" href="https://github.com/" />
             <ContactRow icon={<MapPin className="size-4" />} label="Based in" value="India" />
           </div>
@@ -543,7 +569,7 @@ function Footer() {
           <span className="text-muted-foreground">· © {new Date().getFullYear()}</span>
         </div>
         <div className="flex items-center gap-4 text-muted-foreground">
-          <a href="https://www.linkedin.com/in/pragati-patel-2a3b54318" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin className="size-4" /></a>
+          <a href="https://www.linkedin.com/in/pragati-patel-2a3b54318/" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin className="size-4" /></a>
           <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Github className="size-4" /></a>
           <a href="mailto:2k23.csai2311177@gmail.com" className="hover:text-primary"><Mail className="size-4" /></a>
         </div>
