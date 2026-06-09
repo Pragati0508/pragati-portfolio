@@ -321,7 +321,7 @@ const PRODUCTS = [
     stack: ["IoT","Embedded","Hardware","Field-Ready"],
     icon: <Database className="size-5" />,
     image: novaguardAsset.url,
-    imageAspect: "aspect-[4/3] max-w-[260px] mx-auto",
+    imageAspect: "aspect-[3/4] max-w-[200px] mx-auto",
   },
 ];
 function Products() {
