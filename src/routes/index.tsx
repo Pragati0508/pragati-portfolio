@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
         jobTitle: "Co-Founder & Director, Software Developer",
         worksFor: { "@type": "Organization", name: "Trinova Innovation LLP" },
         email: "mailto:2k23.csai2311177@gmail.com",
-        sameAs: ["https://www.linkedin.com/in/pragati-patel-2a3b54318/"],
+        sameAs: ["https://www.linkedin.com/in/pragati-patel-2a3b54318?utm_source=share_via&utm_content=profile&utm_medium=member_android"],
       }),
     }],
   }),
@@ -146,7 +146,7 @@ function Hero() {
             </a>
           </div>
           <div className="mt-10 flex items-center gap-5 text-muted-foreground">
-            <SocialIcon href="https://www.linkedin.com/in/pragati-patel-2a3b54318/" label="LinkedIn"><Linkedin className="size-4" /></SocialIcon>
+            <SocialIcon href="https://www.linkedin.com/in/pragati-patel-2a3b54318?utm_source=share_via&utm_content=profile&utm_medium=member_android" label="LinkedIn"><Linkedin className="size-4" /></SocialIcon>
             <SocialIcon href="https://github.com/" label="GitHub"><Github className="size-4" /></SocialIcon>
             <SocialIcon href="mailto:2k23.csai2311177@gmail.com" label="Email"><Mail className="size-4" /></SocialIcon>
           </div>
@@ -305,21 +305,23 @@ function Startup() {
 const PRODUCTS = [
   {
     name: "Safeguard+",
-    category: "Smart Safety & Security Platform",
-    desc: "Intelligent safety and security management platform for incident reporting, monitoring, emergency response and organizational safety.",
-    features: ["User Authentication","Role-Based Access","Incident Reporting","Admin Dashboard","Real-Time Monitoring","Secure Data","Cloud Integration","Analytics"],
-    stack: ["React.js","Node.js","Express.js","MongoDB","JWT","AWS"],
+    category: "Personal Safety Device",
+    desc: "A compact personal safety solution combining emergency assistance, portable power and self-defense capabilities in a single device — built for individuals who prioritize personal security.",
+    features: ["5000mAh Power Bank","SOS Alert Button","Self-Defense Electric Shock","USB Charging","Portable & Compact","Rapid Response"],
+    stack: ["IoT","Embedded Systems","Hardware","Patent Filed"],
     icon: <Cpu className="size-5" />,
     image: safeguardAsset.url,
+    imageAspect: "aspect-[16/10]",
   },
   {
     name: "Nova Guard",
-    category: "Intelligent Monitoring System",
-    desc: "Smart monitoring and alert management platform to proactively monitor events, manage alerts and visualize security data.",
-    features: ["Alert Management","Event Tracking","Dashboard Analytics","Monitoring","User Management","Reporting","Data Visualization"],
-    stack: ["React.js","Node.js","MongoDB","AWS","Analytics"],
+    category: "Professional Security Baton",
+    desc: "Professional-grade security baton for law enforcement, traffic management and private security operations. Integrates visibility signaling, illumination, alerting and guidance functions into a single field-ready tool.",
+    features: ["Dual Red/Green LED Signaling","High-Power Flashlight","Laser Pointer","Integrated Buzzer Alert","5000mAh Rechargeable Battery","USB Charging Support"],
+    stack: ["IoT","Embedded","Hardware","Field-Ready"],
     icon: <Database className="size-5" />,
     image: novaguardAsset.url,
+    imageAspect: "aspect-[4/3] max-w-[260px] mx-auto",
   },
 ];
 function Products() {
@@ -331,8 +333,8 @@ function Products() {
           <motion.div key={p.name} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
             className="group glass rounded-3xl p-7 hover:border-primary/40 transition relative overflow-hidden">
             <div className="absolute -top-24 -right-24 size-60 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
-            <div className="relative mb-5 aspect-[16/10] rounded-2xl overflow-hidden bg-secondary/40 border border-border/60">
-              <img src={p.image} alt={p.name} className="size-full object-cover group-hover:scale-105 transition duration-700" />
+            <div className={`relative mb-5 ${p.imageAspect ?? "aspect-[16/10]"} rounded-2xl overflow-hidden bg-secondary/40 border border-border/60`}>
+              <img src={p.image} alt={p.name} className="size-full object-contain group-hover:scale-105 transition duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             </div>
             <div className="flex items-start justify-between gap-4 mb-4">
@@ -437,6 +439,7 @@ const CERTS: { title: string; desc: string; year?: string; icon: React.ReactNode
   { title: "Patent Filed · Safeguard+ Personal Safety Device", desc: "Application No. 202611050617 — IoT-based personal safety device patent filed.", year: "2025", icon: <FileBadge className="size-6" />, accent: "from-primary to-accent" },
   { title: "Co-Founded IoT Safety Startup", desc: "Co-founded Trinova Innovation LLP — a startup focused on IoT-based safety solutions.", icon: <Rocket className="size-6" />, accent: "from-accent to-primary" },
   { title: "Tata Group · GenAI Powered Data Analytics (Forage)", desc: "Job Simulation — Conducted EDA, delinquency risk analysis, predictive modeling and AI-powered collections strategy development.", icon: <BrainCircuit className="size-6" />, accent: "from-primary to-accent" },
+  { title: "Deloitte · Data Analytics Job Simulation (Forage)", desc: "Hands-on job simulation covering data analysis, forensic technology, data cleaning and business intelligence dashboards.", icon: <Database className="size-6" />, accent: "from-accent to-primary" },
   { title: "Generative AI & LLM Certification", desc: "Hands-on with Generative AI models, Large Language Models, prompt engineering and applied AI workflows.", icon: <Sparkles className="size-6" />, accent: "from-accent to-primary" },
   { title: "Python Programming Certification", desc: "Core Python, scripting, data handling and problem-solving fundamentals.", icon: <Code2 className="size-6" />, accent: "from-primary to-accent" },
   { title: "HTML & Bootstrap Certification", desc: "Semantic HTML5 and responsive UI development with the Bootstrap framework.", icon: <Award className="size-6" />, accent: "from-accent to-primary" },
@@ -472,14 +475,15 @@ function Certifications() {
 
 /* ---------- EDUCATION ---------- */
 const EDU = [
-  { period: "Expected 2026", title: "B.Tech · Computer Science and Engineering", body: "Bachelor of Technology — focusing on full-stack development, data analytics and cloud computing." },
-  { period: "PCM", title: "Intermediate · High School", body: "Physics, Chemistry, Mathematics — foundation for engineering." },
+  { period: "2023 – 2027", title: "B.Tech · Computer Science (AI)", body: "PSIT, affiliated with AKTU · CGPA: 7.96 — specializing in Artificial Intelligence, full-stack development and data analytics." },
+  { period: "CBSE · Class 12", title: "Oxford Model Senior Secondary School", body: "Higher Secondary (CBSE) — scored 81% with PCM (Physics, Chemistry, Mathematics)." },
+  { period: "CBSE · Class 10", title: "Oxford Model Senior Secondary School", body: "Secondary Education (CBSE) — scored 89%, building a strong academic foundation." },
 ];
 function Education() {
   return (
     <Section id="education">
       <SectionHeading kicker="Education" title="Academic background" />
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-3 gap-5">
         {EDU.map((e, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
             className="glass rounded-2xl p-6 flex gap-4">
@@ -515,7 +519,7 @@ function Contact() {
           <SectionHeading kicker="Get in touch" title="Let's build something meaningful." sub="Open to collaborations, internships, startup conversations and product opportunities." />
           <div className="space-y-3">
             <ContactRow icon={<Mail className="size-4" />} label="Email" value="2k23.csai2311177@gmail.com" href="mailto:2k23.csai2311177@gmail.com" />
-            <ContactRow icon={<Linkedin className="size-4" />} label="LinkedIn" value="pragati-patel-2a3b54318" href="https://www.linkedin.com/in/pragati-patel-2a3b54318/" />
+            <ContactRow icon={<Linkedin className="size-4" />} label="LinkedIn" value="pragati-patel-2a3b54318" href="https://www.linkedin.com/in/pragati-patel-2a3b54318?utm_source=share_via&utm_content=profile&utm_medium=member_android" />
             <ContactRow icon={<Github className="size-4" />} label="GitHub" value="github.com" href="https://github.com/" />
             <ContactRow icon={<MapPin className="size-4" />} label="Based in" value="India" />
           </div>
@@ -569,7 +573,7 @@ function Footer() {
           <span className="text-muted-foreground">· © {new Date().getFullYear()}</span>
         </div>
         <div className="flex items-center gap-4 text-muted-foreground">
-          <a href="https://www.linkedin.com/in/pragati-patel-2a3b54318/" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin className="size-4" /></a>
+          <a href="https://www.linkedin.com/in/pragati-patel-2a3b54318?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin className="size-4" /></a>
           <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Github className="size-4" /></a>
           <a href="mailto:2k23.csai2311177@gmail.com" className="hover:text-primary"><Mail className="size-4" /></a>
         </div>
