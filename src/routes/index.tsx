@@ -380,18 +380,28 @@ const PROJECTS = [
   { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" /> },
 ];
 function Projects() {
+  const PALETTES = [
+    "from-fuchsia-500 to-violet-600",
+    "from-cyan-400 to-blue-600",
+    "from-amber-400 to-pink-500",
+    "from-emerald-400 to-teal-600",
+  ];
   return (
     <Section id="projects">
       <SectionHeading kicker="Technical projects" title="Things I've built along the way" />
       <div className="grid md:grid-cols-3 gap-5">
         {PROJECTS.map((p, i) => (
           <motion.div key={p.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-            className="glass rounded-2xl p-6 hover:border-accent/40 transition h-full flex flex-col">
-            <div className="size-10 grid place-items-center rounded-xl bg-accent/15 text-accent mb-4">{p.icon}</div>
+            whileHover={{ y: -6 }}
+            className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-border via-border to-border hover:from-fuchsia-500/60 hover:via-amber-400/40 hover:to-cyan-400/60 transition-all duration-500">
+            <div className="glass rounded-2xl p-6 h-full flex flex-col relative overflow-hidden">
+              <div className={`absolute -top-20 -right-20 size-44 rounded-full bg-gradient-to-br ${PALETTES[i % PALETTES.length]} opacity-0 group-hover:opacity-25 blur-3xl transition duration-500`} />
+              <div className={`size-12 grid place-items-center rounded-2xl bg-gradient-to-br ${PALETTES[i % PALETTES.length]} text-white mb-4 shadow-[var(--shadow-glow)] group-hover:scale-110 group-hover:rotate-6 transition`}>{p.icon}</div>
             <h3 className="font-semibold text-lg">{p.name}</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{p.desc}</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {p.tags.map(t => <span key={t} className="text-[11px] rounded-md px-2 py-1 bg-secondary/60 border border-border">{t}</span>)}
+            </div>
             </div>
           </motion.div>
         ))}
