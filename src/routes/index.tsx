@@ -241,6 +241,11 @@ function Section({ id, children, className = "" }: { id: string; children: React
 
 /* ---------- ABOUT ---------- */
 function About() {
+  const ACCENTS = [
+    "from-fuchsia-500 to-pink-500",
+    "from-amber-400 to-orange-500",
+    "from-cyan-400 to-violet-500",
+  ];
   return (
     <Section id="about">
       <SectionHeading kicker="About me" title="Engineer by training, founder by mindset." />
@@ -251,8 +256,10 @@ function About() {
           { icon: <Sparkles className="size-5" />, title: "Learner", text: "I love turning ideas into real-world solutions and continuously learning tools that create meaningful impact." },
         ].map((c, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-            className="glass rounded-2xl p-6 hover:border-primary/40 transition">
-            <div className="size-10 grid place-items-center rounded-xl bg-primary/15 text-primary mb-4">{c.icon}</div>
+            whileHover={{ y: -6 }}
+            className="group glass rounded-2xl p-6 hover:border-primary/40 transition relative overflow-hidden">
+            <div className={`absolute -top-16 -right-16 size-40 rounded-full bg-gradient-to-br ${ACCENTS[i]} opacity-0 group-hover:opacity-30 blur-3xl transition duration-500`} />
+            <div className={`relative size-12 grid place-items-center rounded-2xl bg-gradient-to-br ${ACCENTS[i]} text-white mb-4 shadow-[var(--shadow-glow)] group-hover:rotate-6 transition`}>{c.icon}</div>
             <h3 className="text-lg font-semibold mb-2">{c.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{c.text}</p>
           </motion.div>
