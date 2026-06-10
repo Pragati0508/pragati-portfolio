@@ -84,13 +84,28 @@ function Navbar() {
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all ${scrolled ? "glass shadow-[var(--shadow-elegant)]" : ""}`}>
-          <a href="#top" className="flex items-center gap-2 font-display font-bold text-lg">
-            <span className="size-8 rounded-lg bg-[var(--gradient-primary)] grid place-items-center text-primary-foreground"><Sparkles className="size-4" /></span>
-            <span>Pragati<span className="text-primary">.</span></span>
+          <a href="#top" className="group flex items-center gap-3 font-display font-bold">
+            <span className="relative inline-block">
+              <span className="absolute -inset-0.5 rounded-full bg-[var(--gradient-primary)] opacity-70 blur-[6px] group-hover:opacity-100 transition" />
+              <img src={pragatiAsset.url} alt="Pragati Patel" className="relative size-10 rounded-full object-cover ring-2 ring-primary/50 group-hover:ring-primary transition" />
+              <span className="absolute -bottom-0.5 -right-0.5 size-3 rounded-full bg-emerald-400 ring-2 ring-background" />
+            </span>
+            <span className="flex flex-col leading-tight">
+              <span className="text-[15px] sm:text-base">Pragati Patel<span className="text-primary">.</span></span>
+              <span className="text-[10px] font-medium text-muted-foreground tracking-wide">Founder · Developer</span>
+            </span>
           </a>
-          <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
+          <nav className="hidden md:flex items-center gap-1 text-sm text-muted-foreground">
             {NAV.map(n => (
-              <a key={n.id} href={`#${n.id}`} className="hover:text-foreground transition-colors">{n.label}</a>
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                className="relative px-3 py-1.5 rounded-full hover:text-foreground transition-colors group"
+              >
+                <span className="absolute inset-0 rounded-full bg-[var(--gradient-primary)] opacity-0 group-hover:opacity-15 transition" />
+                <span className="absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full bg-[var(--gradient-primary)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                <span className="relative">{n.label}</span>
+              </a>
             ))}
           </nav>
           <a href={resumeAsset.url} download className="hidden md:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition">
