@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Sparkles, Zap } from "lucide-react";
 import pragatiAsset from "@/assets/pragati.png.asset.json";
 
 const SUGGESTIONS = [
@@ -57,28 +57,53 @@ export default function PragatiChatbot() {
   return (
     <>
       {/* Launcher */}
-      <motion.button
-        onClick={() => setOpen(o => !o)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="fixed bottom-5 right-5 z-[70] size-14 rounded-full bg-[var(--gradient-primary)] shadow-[var(--shadow-glow)] grid place-items-center text-primary-foreground"
-        aria-label="Open chat"
-      >
-        <AnimatePresence mode="wait">
-          {open ? (
-            <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
-              <X className="size-6" />
-            </motion.span>
-          ) : (
-            <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <MessageCircle className="size-6" />
-            </motion.span>
+      <div className="fixed bottom-6 right-6 z-[70] flex items-center gap-3">
+        <AnimatePresence>
+          {!open && (
+            <motion.div
+              initial={{ opacity: 0, x: 20, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 20, scale: 0.8 }}
+              className="hidden sm:flex items-center gap-2 glass rounded-full px-4 py-2 text-sm font-semibold text-foreground shadow-[var(--shadow-elegant)] border border-border/60"
+            >
+              <Zap className="size-4 text-accent fill-accent" />
+              Ask me anything
+            </motion.div>
           )}
         </AnimatePresence>
-        {!open && (
-          <span className="absolute -top-1 -right-1 size-3 rounded-full bg-emerald-400 ring-2 ring-background animate-pulse" />
-        )}
-      </motion.button>
+
+        <motion.button
+          onClick={() => setOpen(o => !o)}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          className="relative size-16 rounded-full bg-[var(--gradient-primary)] shadow-[var(--shadow-glow)] grid place-items-center text-primary-foreground"
+          aria-label="Open chat"
+        >
+          {/* Animated pulse rings */}
+          {!open && (
+            <>
+              <span className="absolute inset-0 rounded-full bg-[var(--gradient-primary)] animate-ping opacity-40" />
+              <span className="absolute -inset-2 rounded-full border-2 border-primary/30 animate-[spin_4s_linear_infinite]" />
+            </>
+          )}
+
+          <AnimatePresence mode="wait">
+            {open ? (
+              <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+                <X className="size-7" />
+              </motion.span>
+            ) : (
+              <motion.span key="msg" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+                <MessageCircle className="size-7" />
+              </motion.span>
+            )}
+          </AnimatePresence>
+
+          {!open && (
+            <span className="absolute -top-1 -right-1 size-4 rounded-full bg-emerald-400 ring-2 ring-background animate-pulse" />
+          )}
+        </motion.button>
+      </div>
 
       <AnimatePresence>
         {open && (
@@ -87,11 +112,11 @@ export default function PragatiChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-24 right-5 z-[70] w-[min(380px,calc(100vw-2.5rem))] h-[min(560px,calc(100vh-8rem))] flex flex-col rounded-3xl overflow-hidden glass shadow-[var(--shadow-elegant)] border border-border/60"
+            className="fixed bottom-28 right-6 z-[70] w-[min(420px,calc(100vw-3rem))] h-[min(580px,calc(100vh-9rem))] flex flex-col rounded-3xl overflow-hidden glass shadow-[var(--shadow-elegant)] border border-border/60"
           >
             {/* Header */}
-            <div className="relative px-4 py-3 flex items-center gap-3 border-b border-border/60 bg-[var(--gradient-primary)] text-primary-foreground">
-              <img src={pragatiAsset.url} alt="Pragati Patel" className="size-10 rounded-full object-cover ring-2 ring-white/40" />
+            <div className="relative px-5 py-4 flex items-center gap-3 border-b border-border/60 bg-[var(--gradient-primary)] text-primary-foreground">
+              <img src={pragatiAsset.url} alt="Pragati Patel" className="size-11 rounded-full object-cover ring-2 ring-white/40" />
               <div className="flex-1 min-w-0">
                 <div className="font-semibold text-sm flex items-center gap-1.5"><Sparkles className="size-3.5" /> Ask Pragati</div>
                 <div className="text-[11px] opacity-80 flex items-center gap-1.5">
@@ -104,7 +129,7 @@ export default function PragatiChatbot() {
             </div>
 
             {/* Messages */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 py-4 space-y-3 bg-background/40">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-background/40">
               {messages.map(m => {
                 const text = m.parts.map(p => (p.type === "text" ? p.text : "")).join("");
                 const isUser = m.role === "user";
@@ -140,7 +165,7 @@ export default function PragatiChatbot() {
 
             {/* Suggestions */}
             {messages.length <= 1 && (
-              <div className="px-3 pb-2 flex flex-wrap gap-1.5">
+              <div className="px-4 pb-2 flex flex-wrap gap-1.5">
                 {SUGGESTIONS.map(s => (
                   <button
                     key={s}
@@ -164,12 +189,12 @@ export default function PragatiChatbot() {
                 onChange={e => setInput(e.target.value)}
                 placeholder="Ask about Pragati…"
                 disabled={busy}
-                className="flex-1 bg-secondary/60 border border-border rounded-full px-4 py-2 text-sm outline-none focus:border-primary/60 disabled:opacity-50"
+                className="flex-1 bg-secondary/60 border border-border rounded-full px-4 py-2.5 text-sm outline-none focus:border-primary/60 disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={busy || !input.trim()}
-                className="size-9 rounded-full bg-[var(--gradient-primary)] text-primary-foreground grid place-items-center disabled:opacity-50 hover:scale-105 transition"
+                className="size-10 rounded-full bg-[var(--gradient-primary)] text-primary-foreground grid place-items-center disabled:opacity-50 hover:scale-105 transition"
                 aria-label="Send"
               >
                 <Send className="size-4" />
