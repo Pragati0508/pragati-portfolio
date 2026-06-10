@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
         "@context": "https://schema.org",
         "@type": "Person",
         name: "Pragati Patel",
-        jobTitle: "Co-Founder & Director, Software Developer",
+        jobTitle: "Co-Founder & Director, Full Stack Web Developer",
         worksFor: { "@type": "Organization", name: "Trinova Innovation LLP" },
         email: "mailto:2k23.csai2311177@gmail.com",
         sameAs: ["https://www.linkedin.com/in/pragati-patel-2a3b54318?utm_source=share_via&utm_content=profile&utm_medium=member_android"],
