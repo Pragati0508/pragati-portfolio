@@ -10,6 +10,7 @@ import {
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
   GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit,
 } from "lucide-react";
+import PragatiChatbot from "@/components/PragatiChatbot";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +65,7 @@ function Index() {
       <Education />
       <Contact />
       <Footer />
+      <PragatiChatbot />
     </div>
   );
 }
