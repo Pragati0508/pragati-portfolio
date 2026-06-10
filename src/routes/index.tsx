@@ -15,9 +15,9 @@ import PragatiChatbot from "@/components/PragatiChatbot";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pragati Patel — Founder, Developer & Data Analyst" },
+      { title: "Pragati Patel — Co-Founder & Full Stack Web Developer" },
       { name: "description", content: "Portfolio of Pragati Patel — Co-Founder & Director at Trinova Innovation LLP. Full-stack developer, data analyst, cloud builder." },
-      { property: "og:title", content: "Pragati Patel — Founder & Developer" },
+      { property: "og:title", content: "Pragati Patel — Co-Founder & Full Stack Web Developer" },
       { property: "og:description", content: "Building intelligent safety, security & monitoring products at Trinova Innovation LLP." },
       { property: "og:image", content: pragatiAsset.url },
     ],
@@ -92,7 +92,7 @@ function Navbar() {
             </span>
             <span className="flex flex-col leading-tight">
               <span className="text-[15px] sm:text-base">Pragati Patel<span className="text-primary">.</span></span>
-              <span className="text-[10px] font-medium text-muted-foreground tracking-wide">Founder · Developer</span>
+              <span className="text-[10px] font-medium text-muted-foreground tracking-wide">Co-Founder & Full Stack Web Developer</span>
             </span>
           </a>
           <nav className="hidden md:flex items-center gap-1 text-sm text-muted-foreground">
