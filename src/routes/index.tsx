@@ -419,6 +419,11 @@ function Projects() {
             <div className="mt-4 flex flex-wrap gap-1.5">
               {p.tags.map(t => <span key={t} className="text-[11px] rounded-md px-2 py-1 bg-secondary/60 border border-border">{t}</span>)}
             </div>
+            {p.github && (
+              <a href={p.github} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition w-fit">
+                <Github className="size-4" /> View on GitHub
+              </a>
+            )}
             </div>
           </motion.div>
         ))}
