@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Sparkles, Zap } from "lucide-react";
+import { MessageCircle, X, Send, Sparkles, Zap, Mic, MicOff } from "lucide-react";
 import pragatiAsset from "@/assets/pragati.png.asset.json";
 
 const SUGGESTIONS = [
@@ -28,6 +28,9 @@ const INITIAL: UIMessage[] = [
 export default function PragatiChatbot() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [listening, setListening] = useState(false);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  const recognitionRef = useRef<any>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -47,11 +50,47 @@ export default function PragatiChatbot() {
     if (open && !busy) inputRef.current?.focus();
   }, [open, busy]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) return;
+    setVoiceSupported(true);
+    const rec = new SR();
+    rec.continuous = false;
+    rec.interimResults = true;
+    rec.lang = "en-US";
+    rec.onresult = (e: any) => {
+      let txt = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) txt += e.results[i][0].transcript;
+      setInput(txt);
+    };
+    rec.onend = () => setListening(false);
+    rec.onerror = () => setListening(false);
+    recognitionRef.current = rec;
+    return () => { try { rec.stop(); } catch {} };
+  }, []);
+
+  const toggleVoice = () => {
+    const rec = recognitionRef.current;
+    if (!rec) return;
+    if (listening) {
+      try { rec.stop(); } catch {}
+      setListening(false);
+    } else {
+      setInput("");
+      try { rec.start(); setListening(true); } catch {}
+    }
+  };
+
   const submit = (text: string) => {
     const t = text.trim();
     if (!t || busy) return;
     void sendMessage({ text: t });
     setInput("");
+    if (listening && recognitionRef.current) {
+      try { recognitionRef.current.stop(); } catch {}
+      setListening(false);
+    }
   };
 
   return (
@@ -115,15 +154,15 @@ export default function PragatiChatbot() {
             className="fixed bottom-28 right-6 z-[70] w-[min(420px,calc(100vw-3rem))] h-[min(580px,calc(100vh-9rem))] flex flex-col rounded-3xl overflow-hidden glass shadow-[var(--shadow-elegant)] border border-border/60"
           >
             {/* Header */}
-            <div className="relative px-5 py-4 flex items-center gap-3 border-b border-border/60 bg-[var(--gradient-primary)] text-primary-foreground">
-              <img src={pragatiAsset.url} alt="Pragati Patel" className="size-11 rounded-full object-cover ring-2 ring-white/40" />
+            <div className="relative px-5 py-4 flex items-center gap-3 border-b border-slate-200 bg-gradient-to-r from-white via-sky-50 to-violet-50 text-slate-900">
+              <img src={pragatiAsset.url} alt="Pragati Patel" className="size-11 rounded-full object-cover ring-2 ring-primary/40" />
               <div className="flex-1 min-w-0">
-                <div className="font-semibold text-sm flex items-center gap-1.5"><Sparkles className="size-3.5" /> Ask Pragati</div>
-                <div className="text-[11px] opacity-80 flex items-center gap-1.5">
-                  <span className="size-1.5 rounded-full bg-emerald-300 animate-pulse" /> AI assistant · online
+                <div className="font-semibold text-sm flex items-center gap-1.5 text-slate-900"><Sparkles className="size-3.5 text-primary" /> Ask Pragati</div>
+                <div className="text-[11px] text-slate-600 flex items-center gap-1.5">
+                  <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" /> AI assistant · online
                 </div>
               </div>
-              <button onClick={() => setOpen(false)} className="opacity-80 hover:opacity-100" aria-label="Close">
+              <button onClick={() => setOpen(false)} className="text-slate-600 hover:text-slate-900 transition" aria-label="Close">
                 <X className="size-5" />
               </button>
             </div>
@@ -187,10 +226,26 @@ export default function PragatiChatbot() {
                 ref={inputRef}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                placeholder="Ask about Pragati…"
+                placeholder={listening ? "Listening…" : "Ask about Pragati… (or use 🎤)"}
                 disabled={busy}
                 className="flex-1 bg-secondary/60 border border-border rounded-full px-4 py-2.5 text-sm outline-none focus:border-primary/60 disabled:opacity-50"
               />
+              {voiceSupported && (
+                <button
+                  type="button"
+                  onClick={toggleVoice}
+                  disabled={busy}
+                  aria-label={listening ? "Stop voice" : "Start voice"}
+                  className={`relative size-10 rounded-full grid place-items-center transition disabled:opacity-50 ${
+                    listening
+                      ? "bg-red-500 text-white shadow-[0_0_0_4px_rgba(239,68,68,0.25)]"
+                      : "bg-secondary/70 text-foreground hover:bg-secondary border border-border"
+                  }`}
+                >
+                  {listening && <span className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-40" />}
+                  {listening ? <MicOff className="size-4 relative" /> : <Mic className="size-4 relative" />}
+                </button>
+              )}
               <button
                 type="submit"
                 disabled={busy || !input.trim()}

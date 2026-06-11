@@ -152,7 +152,7 @@ function Hero() {
             safety, security and monitoring products that solve real-world problems.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={resumeAsset.url} download className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground px-5 py-3 text-sm font-semibold shadow-[var(--shadow-glow)] hover:scale-[1.02] transition">
+            <a href={resumeAsset.url} download className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-3 text-sm font-semibold shadow-[0_10px_30px_-10px_rgba(16,185,129,0.6)] hover:scale-[1.02] hover:from-emerald-400 hover:to-green-500 transition">
               <Download className="size-4" /> Download Resume
             </a>
             <a href="#products" className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm font-semibold hover:bg-card/70 transition">
@@ -391,10 +391,10 @@ function Products() {
 
 /* ---------- TECHNICAL PROJECTS ---------- */
 const PROJECTS = [
-  { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" /> },
-  { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" /> },
-  { name: "Sentiment & Emotion Detection", desc: "AI-powered NLP system that analyzes text to detect sentiment polarity and underlying emotions, generating intelligent contextual responses.", tags: ["Python","NLP","Sentiment","Emotion AI","ML"], icon: <BrainCircuit className="size-5" /> },
-  { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" /> },
+  { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" />, github: "" },
+  { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" />, github: "https://github.com/Pragati0508/news-app-detection-project.git" },
+  { name: "Sentiment & Emotion Detection", desc: "AI-powered NLP system that analyzes text to detect sentiment polarity and underlying emotions, generating intelligent contextual responses.", tags: ["Python","NLP","Sentiment","Emotion AI","ML"], icon: <BrainCircuit className="size-5" />, github: "https://github.com/Pragati0508/face-detection.git" },
+  { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" />, github: "" },
 ];
 function Projects() {
   const PALETTES = [
@@ -419,6 +419,11 @@ function Projects() {
             <div className="mt-4 flex flex-wrap gap-1.5">
               {p.tags.map(t => <span key={t} className="text-[11px] rounded-md px-2 py-1 bg-secondary/60 border border-border">{t}</span>)}
             </div>
+            {p.github && (
+              <a href={p.github} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition w-fit">
+                <Github className="size-4" /> View on GitHub
+              </a>
+            )}
             </div>
           </motion.div>
         ))}
