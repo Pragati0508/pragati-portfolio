@@ -152,7 +152,7 @@ function Hero() {
             safety, security and monitoring products that solve real-world problems.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={resumeAsset.url} download className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground px-5 py-3 text-sm font-semibold shadow-[var(--shadow-glow)] hover:scale-[1.02] transition">
+            <a href={resumeAsset.url} download className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-3 text-sm font-semibold shadow-[0_10px_30px_-10px_rgba(16,185,129,0.6)] hover:scale-[1.02] hover:from-emerald-400 hover:to-green-500 transition">
               <Download className="size-4" /> Download Resume
             </a>
             <a href="#products" className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm font-semibold hover:bg-card/70 transition">
