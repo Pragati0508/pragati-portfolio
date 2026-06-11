@@ -391,10 +391,10 @@ function Products() {
 
 /* ---------- TECHNICAL PROJECTS ---------- */
 const PROJECTS = [
-  { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" /> },
-  { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" /> },
-  { name: "Sentiment & Emotion Detection", desc: "AI-powered NLP system that analyzes text to detect sentiment polarity and underlying emotions, generating intelligent contextual responses.", tags: ["Python","NLP","Sentiment","Emotion AI","ML"], icon: <BrainCircuit className="size-5" /> },
-  { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" /> },
+  { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" />, github: "" },
+  { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" />, github: "https://github.com/Pragati0508/news-app-detection-project.git" },
+  { name: "Sentiment & Emotion Detection", desc: "AI-powered NLP system that analyzes text to detect sentiment polarity and underlying emotions, generating intelligent contextual responses.", tags: ["Python","NLP","Sentiment","Emotion AI","ML"], icon: <BrainCircuit className="size-5" />, github: "https://github.com/Pragati0508/face-detection.git" },
+  { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" />, github: "" },
 ];
 function Projects() {
   const PALETTES = [
