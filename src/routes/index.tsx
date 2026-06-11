@@ -5,10 +5,20 @@ import pragatiAsset from "@/assets/pragati.png.asset.json";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
 import safeguardAsset from "@/assets/safeguard.png.asset.json";
 import novaguardAsset from "@/assets/novaguard.png.asset.json";
+import certPatent from "@/assets/cert-patent.png.asset.json";
+import certTata from "@/assets/cert-tata.png.asset.json";
+import certDeloitte from "@/assets/cert-deloitte.png.asset.json";
+import certGenai from "@/assets/cert-genai.jpg.asset.json";
+import certLlm from "@/assets/cert-llm.jpg.asset.json";
+import certHackathon from "@/assets/cert-hackathon.jpg.asset.json";
+import certPython1 from "@/assets/cert-python1.jpg.asset.json";
+import certPython2 from "@/assets/cert-python2.jpg.asset.json";
+import certHtml5 from "@/assets/cert-html5.jpg.asset.json";
+import certBootstrap from "@/assets/cert-bootstrap.png.asset.json";
 import {
   Github, Linkedin, Mail, Download, ArrowRight, ArrowUpRight,
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
-  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit,
+  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit, Eye,
 } from "lucide-react";
 import PragatiChatbot from "@/components/PragatiChatbot";
 
