@@ -15,6 +15,7 @@ import certPython1 from "@/assets/cert-python1.jpg.asset.json";
 import certPython2 from "@/assets/cert-python2.jpg.asset.json";
 import certHtml5 from "@/assets/cert-html5.jpg.asset.json";
 import certBootstrap from "@/assets/cert-bootstrap.png.asset.json";
+import certDataScience from "@/assets/cert-datascience.jpg.asset.json";
 import {
   Github, Linkedin, Mail, Download, ArrowRight, ArrowUpRight,
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
