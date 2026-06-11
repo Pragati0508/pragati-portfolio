@@ -484,17 +484,18 @@ function Skills() {
 }
 
 /* ---------- CERTS ---------- */
-const CERTS: { title: string; desc: string; year?: string; icon: React.ReactNode; accent: string }[] = [
-  { title: "Patent Filed · Safeguard+ Personal Safety Device", desc: "Application No. 202611050617 — IoT-based personal safety device patent filed.", year: "2025", icon: <FileBadge className="size-6" />, accent: "from-primary to-accent" },
+const CERTS: { title: string; desc: string; year?: string; icon: React.ReactNode; accent: string; images?: string[] }[] = [
+  { title: "Patent Filed · Safeguard+ Personal Safety Device", desc: "Application No. 202611050617 — IoT-based personal safety device patent filed.", year: "2025", icon: <FileBadge className="size-6" />, accent: "from-primary to-accent", images: [certPatent.url] },
   { title: "Co-Founded IoT Safety Startup", desc: "Co-founded Trinova Innovation LLP — a startup focused on IoT-based safety solutions.", icon: <Rocket className="size-6" />, accent: "from-accent to-primary" },
-  { title: "Tata Group · GenAI Powered Data Analytics (Forage)", desc: "Job Simulation — Conducted EDA, delinquency risk analysis, predictive modeling and AI-powered collections strategy development.", icon: <BrainCircuit className="size-6" />, accent: "from-primary to-accent" },
-  { title: "Deloitte · Data Analytics Job Simulation (Forage)", desc: "Hands-on job simulation covering data analysis, forensic technology, data cleaning and business intelligence dashboards.", icon: <Database className="size-6" />, accent: "from-accent to-primary" },
-  { title: "Generative AI & LLM Certification", desc: "Hands-on with Generative AI models, Large Language Models, prompt engineering and applied AI workflows.", icon: <Sparkles className="size-6" />, accent: "from-accent to-primary" },
-  { title: "Python Programming Certification", desc: "Core Python, scripting, data handling and problem-solving fundamentals.", icon: <Code2 className="size-6" />, accent: "from-primary to-accent" },
-  { title: "HTML & Bootstrap Certification", desc: "Semantic HTML5 and responsive UI development with the Bootstrap framework.", icon: <Award className="size-6" />, accent: "from-accent to-primary" },
-  { title: "Hackathon Participation Certificate", desc: "Recognized for participation and rapid product prototyping in competitive hackathons.", icon: <Heart className="size-6" />, accent: "from-primary to-accent" },
+  { title: "Tata Group · GenAI Powered Data Analytics (Forage)", desc: "Job Simulation — Conducted EDA, delinquency risk analysis, predictive modeling and AI-powered collections strategy development.", icon: <BrainCircuit className="size-6" />, accent: "from-primary to-accent", images: [certTata.url] },
+  { title: "Deloitte · Data Analytics Job Simulation (Forage)", desc: "Hands-on job simulation covering data analysis, forensic technology, data cleaning and business intelligence dashboards.", icon: <Database className="size-6" />, accent: "from-accent to-primary", images: [certDeloitte.url] },
+  { title: "Generative AI & LLM Certification", desc: "Generative AI Studio, Large Language Models and applied Generative AI workshop at IIT Kanpur.", icon: <Sparkles className="size-6" />, accent: "from-accent to-primary", images: [certGenai.url, certLlm.url, certHackathon.url] },
+  { title: "Python Programming Certification", desc: "Programming Fundamentals using Python — Part 1 & Part 2 (Infosys Springboard).", icon: <Code2 className="size-6" />, accent: "from-primary to-accent", images: [certPython1.url, certPython2.url] },
+  { title: "HTML & Bootstrap Certification", desc: "HTML5 — The Language & Twitter Bootstrap (Infosys Springboard).", icon: <Award className="size-6" />, accent: "from-accent to-primary", images: [certHtml5.url, certBootstrap.url] },
 ];
 function Certifications() {
+  const [viewing, setViewing] = useState<{ title: string; images: string[] } | null>(null);
+  const [idx, setIdx] = useState(0);
   return (
     <Section id="certs">
       <SectionHeading kicker="Credentials" title="Achievements & certifications" sub="Patents, certifications and milestones along the way." />
@@ -503,7 +504,7 @@ function Certifications() {
           <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
             whileHover={{ y: -6, rotate: -0.3 }}
             className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-border via-border to-border hover:from-primary/60 hover:via-accent/40 hover:to-primary/60 transition-all duration-500">
-            <div className="relative glass rounded-2xl p-6 h-full overflow-hidden">
+            <div className="relative glass rounded-2xl p-6 h-full overflow-hidden flex flex-col">
               <div className="absolute -top-20 -right-20 size-44 rounded-full bg-[var(--gradient-primary)] opacity-0 group-hover:opacity-25 blur-3xl transition duration-500" />
               <div className="flex items-start justify-between mb-4">
                 <div className={`size-12 grid place-items-center rounded-xl bg-gradient-to-br ${c.accent} text-primary-foreground shadow-[var(--shadow-glow)] group-hover:scale-110 group-hover:rotate-6 transition duration-300`}>
@@ -513,11 +514,58 @@ function Certifications() {
               </div>
               <h3 className="font-semibold leading-snug group-hover:text-gradient transition">{c.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+              {c.images && c.images.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => { setViewing({ title: c.title, images: c.images! }); setIdx(0); }}
+                  className="mt-4 self-start inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-2 text-xs font-semibold shadow-[var(--shadow-glow)] hover:scale-105 transition"
+                >
+                  <Eye className="size-3.5" /> View certificate{c.images.length > 1 ? `s (${c.images.length})` : ""}
+                </button>
+              )}
               <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[var(--gradient-primary)] group-hover:w-full transition-all duration-500" />
             </div>
           </motion.div>
         ))}
       </div>
+      <AnimatePresence>
+        {viewing && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-background/85 backdrop-blur-md grid place-items-center p-4"
+            onClick={() => setViewing(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.92, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.92, y: 20 }}
+              transition={{ type: "spring", damping: 22 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl glass rounded-3xl p-4 sm:p-6"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-semibold text-sm sm:text-base pr-8">{viewing.title}</h4>
+                <button onClick={() => setViewing(null)} className="size-9 grid place-items-center rounded-full hover:bg-primary/15 transition">
+                  <X className="size-5" />
+                </button>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden bg-white">
+                <img src={viewing.images[idx]} alt={viewing.title} className="w-full h-auto max-h-[75vh] object-contain" />
+              </div>
+              {viewing.images.length > 1 && (
+                <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
+                  {viewing.images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setIdx(i)}
+                      className={`h-2 rounded-full transition-all ${i === idx ? "w-8 bg-primary" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"}`}
+                      aria-label={`Image ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Section>
   );
 }
