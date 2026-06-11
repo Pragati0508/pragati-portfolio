@@ -15,6 +15,7 @@ import certPython1 from "@/assets/cert-python1.jpg.asset.json";
 import certPython2 from "@/assets/cert-python2.jpg.asset.json";
 import certHtml5 from "@/assets/cert-html5.jpg.asset.json";
 import certBootstrap from "@/assets/cert-bootstrap.png.asset.json";
+import certDataScience from "@/assets/cert-datascience.jpg.asset.json";
 import {
   Github, Linkedin, Mail, Download, ArrowRight, ArrowUpRight,
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
@@ -493,6 +494,10 @@ const CERTS: { title: string; desc: string; year?: string; icon: React.ReactNode
   { title: "Python Programming Certification", desc: "Programming Fundamentals using Python — Part 1 & Part 2 (Infosys Springboard).", icon: <Code2 className="size-6" />, accent: "from-primary to-accent", images: [certPython1.url, certPython2.url] },
   { title: "HTML & Bootstrap Certification", desc: "HTML5 — The Language & Twitter Bootstrap (Infosys Springboard).", icon: <Award className="size-6" />, accent: "from-accent to-primary", images: [certHtml5.url, certBootstrap.url] },
 ];
+CERTS.push(
+  { title: "Hackathon Participation · IIT Kanpur", desc: "Generative AI Hackathon participation certificate — Indian Institute of Technology, Kanpur (Antaragni · Techgyan, 17th August 2025).", year: "2025", icon: <Heart className="size-6" />, accent: "from-primary to-accent", images: [certHackathon.url] },
+  { title: "Data Science · CodeWithHarry", desc: "The Ultimate Job Ready Data Science Course — completed online course by CodeWithHarry covering end-to-end data science fundamentals.", icon: <BrainCircuit className="size-6" />, accent: "from-accent to-primary", images: [certDataScience.url] },
+);
 function Certifications() {
   const [viewing, setViewing] = useState<{ title: string; images: string[] } | null>(null);
   const [idx, setIdx] = useState(0);
