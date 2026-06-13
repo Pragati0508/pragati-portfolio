@@ -80,10 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Pragati Patel — Software Developer, Data Analyst & Co-Founder" },
       { name: "description", content: "Portfolio of Pragati Patel — Final Year B.Tech, Software Developer, Data Analyst and Co-Founder & Director at Trinova Innovation LLP." },
       { name: "author", content: "Pragati Patel" },
-      { property: "og:title", content: "Pragati Patel — Founder & Developer Portfolio" },
-      { property: "og:description", content: "Final Year B.Tech, Software Developer, Data Analyst, Co-Founder of Trinova Innovation LLP." },
+      { property: "og:title", content: "Pragati Patel — Software Developer, Data Analyst & Co-Founder" },
+      { property: "og:description", content: "Portfolio of Pragati Patel — Final Year B.Tech, Software Developer, Data Analyst and Co-Founder & Director at Trinova Innovation LLP." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Pragati Patel — Software Developer, Data Analyst & Co-Founder" },
+      { name: "twitter:description", content: "Portfolio of Pragati Patel — Final Year B.Tech, Software Developer, Data Analyst and Co-Founder & Director at Trinova Innovation LLP." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/48a2b8b8-785a-4c96-ad42-bd60b654a1ae/id-preview-a634d94a--6f91c288-32d5-455d-ba42-c298ea4c04e0.lovable.app-1781348824540.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/48a2b8b8-785a-4c96-ad42-bd60b654a1ae/id-preview-a634d94a--6f91c288-32d5-455d-ba42-c298ea4c04e0.lovable.app-1781348824540.png" },
     ],
     links: [
       {
