@@ -106,7 +106,7 @@ export default function PragatiChatbot() {
               className="hidden sm:flex items-center gap-2 glass rounded-full px-4 py-2 text-sm font-semibold text-foreground shadow-[var(--shadow-elegant)] border border-border/60"
             >
               <Zap className="size-4 text-accent fill-accent" />
-              Ask me anything
+              Ask Pragati AI
             </motion.div>
           )}
         </AnimatePresence>
