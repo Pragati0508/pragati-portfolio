@@ -22,6 +22,7 @@ import {
   GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit, Eye, ExternalLink, LineChart,
 } from "lucide-react";
 import PragatiChatbot from "@/components/PragatiChatbot";
+import AmbientBackdrop from "@/components/AmbientBackdrop";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -63,19 +64,22 @@ function Index() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 25 });
   return (
     <div className="bg-hero min-h-screen text-foreground overflow-x-hidden">
+      <AmbientBackdrop />
       <motion.div style={{ scaleX }} className="fixed top-0 left-0 right-0 h-[2px] origin-left bg-[var(--gradient-primary)] z-[60]" />
-      <Navbar />
-      <Hero />
-      <Stats />
-      <About />
-      <Startup />
-      <Products />
-      <Projects />
-      <Skills />
-      <Certifications />
-      <Education />
-      <Contact />
-      <Footer />
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <Stats />
+        <About />
+        <Startup />
+        <Products />
+        <Projects />
+        <Skills />
+        <Certifications />
+        <Education />
+        <Contact />
+        <Footer />
+      </div>
       <PragatiChatbot />
     </div>
   );
