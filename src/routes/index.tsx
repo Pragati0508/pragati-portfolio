@@ -19,7 +19,7 @@ import certDataScience from "@/assets/cert-datascience.jpg.asset.json";
 import {
   Github, Linkedin, Mail, Download, ArrowRight, ArrowUpRight,
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
-  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit, Eye, ExternalLink, LineChart,
+  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit, Eye, ExternalLink, LineChart, Users,
 } from "lucide-react";
 import PragatiChatbot from "@/components/PragatiChatbot";
 import AmbientBackdrop from "@/components/AmbientBackdrop";
@@ -408,6 +408,7 @@ function Products() {
 const PROJECTS = [
   { name: "StartupScope AI", desc: "The Credit Score for Startups — built during a Google AI Hackathon. AI-powered platform that analyzes startup ideas, innovation, market potential, investment readiness, IP strength and TRL/MRL maturity to generate intelligent insights and venture assessment reports.", tags: ["Google Gemini","AI Studio","Next.js","TypeScript","Tailwind"], icon: <LineChart className="size-5" />, github: "https://github.com/Pragati0508/StartupScope-AI", live: "https://startup-scope-ai.vercel.app" },
   { name: "HireVerse AI", desc: "Full-stack AI interview & coding intelligence platform with dynamic evaluation, real-time scoring, and performance dashboard. Features a VS Code-like editor with Docker-based sandboxed multi-language execution eliminating third-party API dependency.", tags: ["AI","Full-Stack","Docker","Real-Time","VS Code Editor"], icon: <Cpu className="size-5" />, github: "https://github.com/Pragati0508/HireVerse-FullStack.git", live: "" },
+  { name: "MeetFlow", desc: "Real-Time Team Collaboration Platform — built as Task 1 of the CodeAlpha Full Stack Development Internship. Enables seamless team communication through Google Authentication, instant messaging, collaborative whiteboarding, file sharing, and virtual meeting rooms with Socket.IO-powered real-time interactions.", tags: ["React.js","Node.js","Express.js","MongoDB Atlas","Socket.IO","Firebase","Tailwind CSS"], icon: <Users className="size-5" />, github: "https://github.com/Pragati0508/CodeAlpha_MeetFlow.git", live: "" },
   { name: "AWS Weather API", desc: "Serverless weather app using AWS Lambda, API Gateway, Python and OpenWeather API.", tags: ["Serverless","AWS Lambda","API Gateway","REST","Cloud"], icon: <Cloud className="size-5" />, github: "https://github.com/Pragati0508/news-app-detection-project.git", live: "" },
   { name: "Sentiment & Emotion Detection", desc: "AI-powered NLP system that analyzes text to detect sentiment polarity and underlying emotions, generating intelligent contextual responses.", tags: ["Python","NLP","Sentiment","Emotion AI","ML"], icon: <BrainCircuit className="size-5" />, github: "https://github.com/Pragati0508/face-detection.git", live: "" },
   { name: "MealRescue", desc: "Smart Food Recovery & Delivery System — full-stack web platform that connects food donors (restaurants, hotels, cafeterias, event organizers) with NGOs and volunteers for efficient food redistribution to reduce waste and combat hunger.", tags: ["Full-Stack","React","Node.js","MongoDB","Social Impact"], icon: <Utensils className="size-5" />, github: "", live: "" },
