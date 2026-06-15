@@ -19,7 +19,7 @@ import certDataScience from "@/assets/cert-datascience.jpg.asset.json";
 import {
   Github, Linkedin, Mail, Download, ArrowRight, ArrowUpRight,
   Rocket, Sparkles, Code2, Database, Cloud, Cpu, Briefcase,
-  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit, Eye, ExternalLink, LineChart,
+  GraduationCap, Award, MapPin, Send, Menu, X, FileBadge, Utensils, Heart, BrainCircuit, Eye, ExternalLink, LineChart, Users,
 } from "lucide-react";
 import PragatiChatbot from "@/components/PragatiChatbot";
 import AmbientBackdrop from "@/components/AmbientBackdrop";
