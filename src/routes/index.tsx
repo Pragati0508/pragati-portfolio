@@ -303,7 +303,7 @@ function About() {
 
 /* ---------- STARTUP ---------- */
 const STARTUP_RESP = ["Product Strategy & Planning","Business Development","Team Leadership","Technical Project Oversight","Startup Pitching & Networking","Innovation Management","Stakeholder Communication"];
-const STARTUP_ACH = ["Represented startup in entrepreneurship and innovation events","Participated in pitching competitions at IIT Delhi and IIT Kanpur","Built and managed innovative software product initiatives","Led startup growth and product strategy activities"];
+const STARTUP_ACH = ["Represented startup in entrepreneurship and innovation events","Participated in pitching competitions at IIT Delhi and IIT Kanpur","Built and managed innovative software product initiatives","Led startup growth and product strategy activities","Completed CodeAlpha Full Stack Development Internship and built production-ready MERN stack applications with real-time collaboration features"];
 function Startup() {
   return (
     <Section id="startup">
